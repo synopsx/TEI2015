@@ -36,7 +36,7 @@ import module namespace synopsx.models.tei = 'synopsx.models.tei' at '../../../m
 import module namespace synopsx.mappings.htmlWrapping = 'synopsx.mappings.htmlWrapping' at '../../../mappings/htmlWrapping.xqm' ;
 
 (: Use a default namespace :)
-declare default function namespace 'example.webapp' ;
+declare default function namespace 'TEI2015Workshop.webapp' ;
 
 
 declare variable $example.webapp:project := 'example' ;
@@ -49,7 +49,7 @@ declare variable $example.webapp:db := synopsx.models.synopsx:getProjectDB($exam
  :
  :)
 declare 
-  %restxq:path("/example")
+  %restxq:path("/TEI2015Workshop")
 function index() {
   <rest:response>
     <http:response status="303" message="See Other">
@@ -65,7 +65,7 @@ function index() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/example/home')
+  %restxq:path('/TEI2015Workshop/home')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
@@ -98,7 +98,7 @@ function home() {
  : @bug not working curl -I -H "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" http://localhost:8984/corpus/
  :)
 declare 
-  %restxq:path('/example/letters')
+  %restxq:path('/TEI2015Workshop/letters')
   %rest:produces('application/json')
   %output:method('json')
 function textsJS() {
@@ -119,7 +119,7 @@ function textsJS() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/example/letters')
+  %restxq:path('/TEI2015Workshop/letters')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
@@ -147,7 +147,7 @@ function textsHtml() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/example/letter/{$id}')
+  %restxq:path('/TEI2015Workshop/letter/{$id}')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
