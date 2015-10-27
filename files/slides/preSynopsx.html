@@ -17,23 +17,88 @@ class: inverse
 name: index
 class: middle center
 
-# Workshop SynopsX TEI2015
+# Workshop SynopsX
 
 TEI2015 | 28th october 2015
 
-.footnote[[GitHub](https://github.com/synopsx/TEI2015)]
+.footnote[[GitHub](https://github.com/synopsx/TEI2015) | [part1](#part1) | [part2](#part2) | [part3](#part3)]
+
+???
+Thanks a lot for attending the workshop
+
+A lightweight XQuery-based framework
+
+Curently in development
+
+To present the current status of the project and explore with you the usability of the project.
+Collect thoughts and remarks for further dev.
+
+Modest objectives for today :
+- install the software
+- explain the inner fonctionnalities
+- deploy your own project with SynopsX
 
 ---
 
-# Sommaire
+# Program
 
-### [part1](#part1)
-### [part2](#part2)
+### 1. [What is SynopsX](#part1)
+### 2. [A quick tour into XML databases](#part2)
+### 3. [SynopsX inside](#part3)
+
+---
+name: part1
+template: inverse
+class: middle center
+
+# .red[1] What is SynopsX ?
+
+---
+layout: false
+
+# A lightweight XQuery-based framework...
+
+### To easily publish and expose XML corpora
+### A full XQuery web application built upon BaseX
+### Scalable and easily customizable solution
+### Brings a templating system
+
+## Working examples on line
+http://editions.ihpc.huma-num.fr/
 
 ???
-SynopsX is a collective project whose aim is to propose a web application built on BaseX to easily expose and publish XML textual sources and data (mostly encoded in TEI http://tei-c.org/).
+# SynopsX : A lightweight XQuery-based framework to easily publish and expose XML corpora
 
-Initiated by the Atelier des Humanités Numériques (Digital Humanities Workshop) from École Normale Supérieure in Lyon, SynopsX gathers various french projects in the fields of history and literary studies.
+__Initiated by the Digital humanities network of ENS Lyon (Atelier des Humanités Numériques)__, SynopsX is a lightweight framework which aimed is to easily publish and expose XML corpora.
+
+It’s __a full XQuery web application built upon BaseX__, a native XML Database and XQuery 3.0 processor. The sources of the project are published under GNU on GitHub (h​ttps://github.com/ahn­ens­lyon/synopsx)​.
+
+__SynopsX has been conceived as a scalable and easily customizable solution__ for HTML5 publication of XML files (TEI, EAD...).
+It allows __full control over the URL scheme__ to build real REST applications and we are planning to use it to expose XML corpora in the Linked Open Data.
+
+The software brings __a templating system__ for various renderings of resources according to predefined or customized mappings from XML data to output formats.
+As different partners were involved in the development, three principles have guided the conception of the software : collaboration, mutualization and genericization. At least from this point of view, we can say that SynopsX is a fruitful example of non­institutionnal collaboration around the building of an open source software in the field of the TEI.
+
+---
+
+# A non-institutionnal collaboration (free software model)
+
+### Initiated by AHN...
+research teams participating in Atelier des Humanités Numériques (AHN), ENS-Lyon
+
+### And folks !
+- ANR Ampère, Labex Passés dans le présent, etc.
+- all contributors engaged in various projects related to  "instrumented corpus"
+
+### A free software
+- published under GNU General Public License >3
+- Hosted on Github http://github.com/synopsx
+
+???
+
+# A non-institutionnal collaboration (free software model)
+
+SynopsX is __a collective project__. Initiated by the Atelier des Humanités Numériques (Digital Humanities Workshop) from École Normale Supérieure in Lyon, SynopsX gathers various french projects in the fields of history and literary studies.
 
 Contributors are all engaged in different projects but all share the same conception about what should be what we call an "instrumented corpus" :
 
@@ -42,27 +107,9 @@ Saying that, we mean :
 - giving to the researcher or to visitors tools to explore and visualise the datas
 - and text distribution that allow you to enrich and link the data on the Linked Open Data
 
----
-name: part2
-template: inverse
-class: middle center
-
-# What is SynopsX ?
-
----
-layout: false
-
-# A lightweight framework...
-
-### Exemples [todo]
-### a candidate facility for the french research infrastructure TGIR Huma-Num
-
-
-???
-
-- the TGIR Huma-Num http://www.huma-num.fr is a very large facility which aims to facilitate the digital turn in humanities and social sciences. TGIR Huma-Num coordinates the  participation of France in the European digital research infrastructure for the arts and humanities DARIAH http://www.dariah.fr
-
 The scope of SynopsX is on the one hand to help a single researcher to easily publish, explore and expose their XML data, and on the other hand for ITs teams to collaborate, mutualize and genericize their efforts. The project is candidate to join the facilities offered to researchers in arts and humanities by the TGIR Huma-Num.
+
+- the TGIR Huma-Num http://www.huma-num.fr is a very large facility which aims to facilitate the digital turn in humanities and social sciences.
 
 ---
 
@@ -88,6 +135,12 @@ The scope of SynopsX is on the one hand to help a single researcher to easily pu
 
 ![Tradi](.jpg)
 
+???
+Various approaches have been proposed to publish TEI corpora on line, but no standard software solution has emerged yet. As a possible next step after the markup of an edition, publication is still a difficult issue for many projects in Digital humanities.
+
+When it comes to publish XML data on the web, you often need to use mixed technologies.
+MySQL, PHP, W3C recommandations for HTML, CSS, JS...
+
 ---
 
 # why SynopsX ?
@@ -96,24 +149,67 @@ The scope of SynopsX is on the one hand to help a single researcher to easily pu
 ![A Full XML Stack](.jpg)
 
 ---
-
-# Qui ?
-
-### AHN and folks !
-...
-
-+ an non-institutionnal collaboration (free software model)
-
----
 name: part2
 template: inverse
 class: middle center
 
-# A quick tour in XML database
+# .red[2] A quick tour into XML database
 
 ---
 
 # What is an XML database ?
+
+Various solutions have been developped to use XML data
+### Flat storage of XML files
+### Use of relationnal databases
+### Native storage of XML data in native XML systems
+
+???
+As you may know, various solutions have been developped to use XML data
+- flat storage of XML files
+- use of relationnal databases
+- native storage of XML data in native XML systems
+
+Flat storage is the far most simple solution. The full XML document stands for the main entity, inner structures playing no role.
+This solution can be implemented with any file sytem. If the storage is unexpensive and efficient, some others tasks as search requires access to the inner structures of the document and then becomes prohibitives.
+
+XML data can also be stored into relationnal databases. Thus it can benefit from indexing fonctionnalities, trading and query optimisation offered by these systems.
+Thus as XML are semi-structured data, the conversion to a relational model is not either efficient nor always possible because of the significant differences inherent to their respective models.
+These conversions generaly implies costfull joints for requests.
+
+---
+
+# What is an XML database ?
+
+### Preserve XML structures
+### Store XML using Schema specification
+### Indexing XML data structures
+### Allow document access throught XML techs (XPath, XQuery, etc. )
+
+???
+
+Native XML storage have the advantage to preserve XML document structures (elements, attributes, entities).
+They can store XML documents using the Schema specification.
+They allow document access throught XML technologies as XPath, XQuery, etc.
+
+cf. http://www.rpbourret.com/xml/ProdsNative.htm
+
+As they were specialy conceived to deal with XML data, native XML database have the advantage not to require any conversion operations.
+Storage techniques and treatment of request in use with XML database are often more efficient than those based on flat file storage or relational databases.
+
+Many indexes facilitates access to structure and data.
+And fonctionnalities usually follows XML standard conformance and standard implementation ; especially XSL, XProc, Xforms, XLink, etc.
+
+---
+
+# The BaseX components and APIs
+
+![BaseXserver](.png)
+
+---
+
+# Access to your data with an XML database
+(demo)
 
 ---
 
@@ -125,7 +221,8 @@ HTTP
 
 ---
 
-# RESTXQ démo
+# RESTXQ
+(demo)
 
 ???
 - Show a path-annotated function that execute the same query
@@ -137,11 +234,15 @@ name: part3
 template: inverse
 class: middle center
 
-# SynopsX inside
+# .red[3] SynopsX inside
 
 ---
 
 # The Workshop usecase
+
+### Show a full example website with SynopsX
+### Starting from an incomplete version
+### Build the missing features
 
 ???
 # The workshop usecase
@@ -151,11 +252,14 @@ class: middle center
 ---
 
 # SynopsX installation (Linux and Mac OS)
-- Download : https://raw.githubusercontent.com/synopsx/synopsx/master/install.sh
-- In a terminal run `bash install.sh`
-- In a terminal run `/opt/basex/bin/basexhttp`
-- In an other terminal run `/opt/basex/bin/basexgui`
+### Download :
+https://raw.githubusercontent.com/synopsx/synopsx/master/install.sh
+### In a terminal run `bash install.sh`
+### In a terminal run `/opt/basex/bin/basexhttp`
+### In an other terminal run `/opt/basex/bin/basexgui`
 
+BaseX version 8 needs Java > 7. Install the Java Development Kit version 8 :
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
 ---
 
 # Development principles
@@ -188,16 +292,19 @@ LOD perspectives + API
 
 # Code hierarchy
 
-### `_restxq/` contains the resource functions
-### `files/` contains SynopsX static files
-### `mappings/` contains SynopsX mappings (from data to various output formats)
-### `models/` contains SynopsX models (functions to access data in various formats)
-### `templates/` contains SynopsX templates (for HTML templating, etc.)
-### `workspace/` contains YOUR OWN projects !
+#### `_restxq/` contains the resource functions
+#### `files/` contains SynopsX static files
+#### `mappings/` contains SynopsX mappings (from data to various output formats)
+#### `models/` contains SynopsX models (functions to access data in various formats)
+#### `templates/` contains SynopsX templates (for HTML templating, etc.)
+#### `workspace/` contains YOUR OWN projects !
 
 ---
 
 # Project hierarchy
+
+### .red[is the same] !
+
 ```
 _restxq/
 files/
@@ -220,7 +327,58 @@ Explain heritage
 
 ---
 
-# Exercice 
+# A Pedagogic project
+
+### Download the code and the XML file
+- http://github.com/synopsx/TEI2015
+### Create the project
+- http://localhost:8984/synopx
+### Open the code in an editor
+- `workspace/TEI2015/_restxq/`
+### Access some URLs
+### See the work to be done
+
+???
+# Pedagogic project installation
+### Make them install the pedagogic project (the downgraded version of the exemple project).
+### download the code and the XML file
+### create the database
+### open the code in an editor
+### go to http://localhost:8984/TEI2015Workshop
+### go to http://localhost:8984/example
+### go to http://localhost:8984/example/letters
+### go to http://localhost:8984/TEI2015Workshop/letters
+### See the work to be done
+
+---
+# Create your first resources functions
+
+### Create your own simple resource function with RESTXQ
+
+```
+  xquery version "3.0" ;
+  module namespace demo = 'demo' ;
+  declare default function namespace 'demo' ;
+  (:~
+   : resource function demo
+   :)
+  declare
+    %restxq:path('/demo')
+    %rest:produces('text/html')
+    %output:method('html')
+    %output:html-version('5.0')
+  function titres() {
+    <p>Hello World !</p>
+    };
+```
+
+---
+
+# Upgrade the TEI2015 project
+
+### Add somme XQuery treatment for persName
+### Add an HTML ressource for an Index
+### Add a JSON ressource for an index
 
 ---
 
@@ -246,24 +404,6 @@ With RESTXQ you can serve the content you want at the URI you choose.
 
 ---
 
-xquery version "3.0" ;
-  module namespace demo = 'demo' ;
-  declare default function namespace 'demo' ;
-  (:~
-   : resource function demo
-   :)
-  declare
-    %restxq:path('/demo')
-    %rest:produces('text/html')
-    %output:method('html')
-    %output:html-version('5.0')
-  function titres() {
-    myFunction()
-    };
-```
-
----
-
 ## SynopsX models functions (`models/`)
 
 queryTei($queryParams)
@@ -286,21 +426,9 @@ getTEIItems($queryParams)
 
 ---
 
-# How to
-
-
----
-
 # Questions ?
 
 https://github.com/synopsx
-
-
----
-
-La version 8 de BaseX nécessite Java > 7.
-Nous vous conseillons de télécharger et d’installer le Java Development Kit version 8 :
-http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 ---
 name: last-page
