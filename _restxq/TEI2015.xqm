@@ -87,32 +87,6 @@ function home() {
  return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
 };
 
-
-
-(:~
- : this resource function is the corpus resource
- :
- : @return an HTTP message with Content-location against the user-agent request
- : @rmq Content-location in HTTP can be used when a requested resource has 
- : multiple representations. The selection of the resource returned will depend 
- : on the Accept headers in the original GET request.
- : @bug not working curl -I -H "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" http://localhost:8984/corpus/
- :)
-declare 
-  %restxq:path('/TEI2015/tei')
-  %rest:produces('application/json')
-  %output:method('json')
-function textsJS() {
-   let $queryParams := map {
-      'project' : $TEI2015.webapp:project,     
-      'dbName' : $TEI2015.webapp:db,
-      'model' : 'tei',
-      'function' : 'queryTEI'
-    }    
-   let $function := xs:QName(synopsx.models.synopsx:getModelFunction($queryParams))
-    return fn:function-lookup($function, 1)($queryParams)
-};
-
 (:~
  : this resource function is the html representation of the corpus resource
  :

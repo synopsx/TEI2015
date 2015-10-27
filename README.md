@@ -2,7 +2,7 @@
 
 ## Schedule
 1. What is an XML database
-  * Access to XML document through Oxygen 
+  * Access to XML document through Oxygen
   * Access to XML document through Rest
   * Query XML document through Oxygen (note the execution time)
   * Query XML document through Rest (note the execution time and compare)
@@ -13,7 +13,7 @@
   * We conclude we've build a full publication based on this mecanism, SynopsX
 
 3. SynopsX
-  1. Introduction 
+  1. Introduction
     * Show the full example website
     * Explain that we will start from a downgraded version and build the missing features in order to rebuild the example website
   2. SynopsX installation
@@ -31,7 +31,9 @@
       * go to http://localhost:8984/example/letters
       * go to http://localhost:8984/TEI2015Workshop/letters
       * See the work to be done
-
+      * Add somme XQuery treatment for persName
+      * Add an HTML ressource for an Index
+      * Add a JSON ressource for an index
 
 ## Questions
   * What document do we use? The sample corpus?
