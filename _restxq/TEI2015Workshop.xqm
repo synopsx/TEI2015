@@ -1,8 +1,8 @@
 xquery version "3.0" ;
-module namespace example.webapp = 'example.webapp' ;
+module namespace TEI2015Workshop.webapp = 'TEI2015Workshop.webapp' ;
 
 (:~
- : This module is the RESTXQ for SynopsX's example
+ : This module is the RESTXQ for SynopsX's TEI2015Workshop
  :
  : @version 2.0 (Constantia edition)
  : @since 2015-02-05 
@@ -31,6 +31,7 @@ import module namespace synopsx.models.synopsx = 'synopsx.models.synopsx' at '..
 
 (: Put here all import modules declarations as needed :)
 import module namespace synopsx.models.tei = 'synopsx.models.tei' at '../../../models/tei.xqm' ;
+import module namespace synopsx.models.ead = 'synopsx.models.ead' at '../../../models/ead.xqm' ;
 
 (: Put here all import declarations for mapping according to models :)
 import module namespace synopsx.mappings.htmlWrapping = 'synopsx.mappings.htmlWrapping' at '../../../mappings/htmlWrapping.xqm' ;
@@ -39,8 +40,8 @@ import module namespace synopsx.mappings.htmlWrapping = 'synopsx.mappings.htmlWr
 declare default function namespace 'TEI2015Workshop.webapp' ;
 
 
-declare variable $example.webapp:project := 'example' ;
-declare variable $example.webapp:db := synopsx.models.synopsx:getProjectDB($example.webapp:project) ;
+declare variable $TEI2015Workshop.webapp:project := 'TEI2015Workshop' ;
+declare variable $TEI2015Workshop.webapp:db := synopsx.models.synopsx:getProjectDB($TEI2015Workshop.webapp:project) ;
 
 
 
@@ -53,7 +54,7 @@ declare
 function index() {
   <rest:response>
     <http:response status="303" message="See Other">
-      <http:header name="location" value="/example/home"/>
+      <http:header name="location" value="/TEI2015Workshop/home"/>
     </http:response>
   </rest:response>
 };
@@ -71,11 +72,11 @@ declare
   %output:html-version("5.0")
 function home() {
   let $queryParams := map {
-    'project' : $example.webapp:project,
-    'dbName' :  $example.webapp:db,
+    'project' : $TEI2015Workshop.webapp:project,
+    'dbName' :  $TEI2015Workshop.webapp:db,
     'model' : 'tei' ,
-    'function' : 'queryCorpusList',
-    'id' : $example.webapp:project
+    'function' : 'queryCorpus',
+    'id' : $TEI2015Workshop.webapp:project
     }
   let $outputParams := map {
     'lang' : 'fr',
@@ -98,15 +99,15 @@ function home() {
  : @bug not working curl -I -H "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" http://localhost:8984/corpus/
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/letters')
+  %restxq:path('/TEI2015Workshop/tei')
   %rest:produces('application/json')
   %output:method('json')
 function textsJS() {
    let $queryParams := map {
-      'project' : $example.webapp:project,     
-      'dbName' : $example.webapp:db,
+      'project' : $TEI2015Workshop.webapp:project,     
+      'dbName' : $TEI2015Workshop.webapp:db,
       'model' : 'tei',
-      'function' : 'queryTEIList'
+      'function' : 'queryTEI'
     }    
    let $function := xs:QName(synopsx.models.synopsx:getModelFunction($queryParams))
     return fn:function-lookup($function, 1)($queryParams)
@@ -119,16 +120,16 @@ function textsJS() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/letters')
+  %restxq:path('/TEI2015Workshop/tei')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
 function textsHtml() {  
     let $queryParams := map {
-    'project' : $example.webapp:project,
-    'dbName' :  $example.webapp:db,
+    'project' : $TEI2015Workshop.webapp:project,
+    'dbName' :  $TEI2015Workshop.webapp:db,
     'model' : 'tei' ,
-    'function' : 'queryTEIList'
+    'function' : 'queryTEI'
     }
    let $outputParams := map {
     'lang' : 'fr',
@@ -147,22 +148,77 @@ function textsHtml() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/letter/{$id}')
+  %restxq:path('/TEI2015Workshop/tei/{$id}')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
 function textHtml($id) {
   let $queryParams := map {
-  'project' : $example.webapp:project,
-  'dbName' :  $example.webapp:db,
+  'project' : $TEI2015Workshop.webapp:project,
+  'dbName' :  $TEI2015Workshop.webapp:db,
   'model' : 'tei' ,
-  'function' : 'queryTEIList',
+  'function' : 'queryTEI',
   'id':$id
   }
  let $outputParams := map {
   'lang' : 'fr',
   'layout' : 'home.xhtml',
   'pattern' : 'inc_textItem.xhtml'
+  (: specify an xslt mode and other kind of output options :)
+  }
+return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
+};  
+
+
+(:~
+ : this resource function is the html representation of the corpus resource
+ :
+ : @return an html representation of the corpus resource with a bibliographical list
+ : the HTML serialization also shows a bibliographical list
+ :)
+declare 
+  %restxq:path('/TEI2015Workshop/ead')
+  %rest:produces('text/html')
+  %output:method("html")
+  %output:html-version("5.0")
+function eadHtml() {
+  let $queryParams := map {
+  'project' : $TEI2015Workshop.webapp:project,
+  'dbName' :  $TEI2015Workshop.webapp:db,
+  'model' : 'ead' ,
+  'function' : 'queryEad'
+  }
+ let $outputParams := map {
+  'lang' : 'fr',
+  'layout' : 'home.xhtml',
+  'pattern' : 'inc_eadItem.xhtml'
+  (: specify an xslt mode and other kind of output options :)
+  }
+return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
+};  
+
+(:~
+ : this resource function is the html representation of the corpus resource
+ :
+ : @return an html representation of the corpus resource with a bibliographical list
+ : the HTML serialization also shows a bibliographical list
+ :)
+declare 
+  %restxq:path('/TEI2015Workshop/ead/c')
+  %rest:produces('text/html')
+  %output:method("html")
+  %output:html-version("5.0")
+function cHtml() {
+  let $queryParams := map {
+  'project' : $TEI2015Workshop.webapp:project,
+  'dbName' :  $TEI2015Workshop.webapp:db,
+  'model' : 'ead' ,
+  'function' : 'queryC'
+  }
+ let $outputParams := map {
+  'lang' : 'fr',
+  'layout' : 'home.xhtml',
+  'pattern' : 'inc_cItem.xhtml'
   (: specify an xslt mode and other kind of output options :)
   }
 return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
