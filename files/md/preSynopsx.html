@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <title>Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="themes/remark-dark.css" rel="stylesheet" media="all" type="text/css"/>
+      </head>
+      <body>
+        <textarea id="source">
+title: Workshop Synopsx TEI2015
+description: slides of the workshop
+theme: themes/remark-dark.css
+layout: true
+class: inverse
+
+---
+name: index
+class: middle center
+
+# Workshop SynopsX TEI2015
+
+TEI2015 | 28th october 2015
+
+.footnote[[GitHub](https://github.com/synopsx/TEI2015)]
+
+---
+
+# Sommaire
+
+### [part1](#part1)
+### [part2](#part2)
+
+???
+SynopsX is a collective project whose aim is to propose a web application built on BaseX to easily expose and publish XML textual sources and data (mostly encoded in TEI http://tei-c.org/).
+
+Initiated by the Atelier des Humanités Numériques (Digital Humanities Workshop) from École Normale Supérieure in Lyon, SynopsX gathers various french projects in the fields of history and literary studies.
+
+Contributors are all engaged in different projects but all share the same conception about what should be what we call an "instrumented corpus" :
+
+Saying that, we mean :
+- corpus you can more than publish, but expose on the web
+- giving to the researcher or to visitors tools to explore and visualise the datas
+- and text distribution that allow you to enrich and link the data on the Linked Open Data
+
+---
+name: part2
+template: inverse
+class: middle center
+
+# What is SynopsX ?
+
+---
+layout: false
+
+# A lightweight framework...
+
+### Exemples [todo]
+### a candidate facility for the french research infrastructure TGIR Huma-Num
+
+
+???
+
+- the TGIR Huma-Num http://www.huma-num.fr is a very large facility which aims to facilitate the digital turn in humanities and social sciences. TGIR Huma-Num coordinates the  participation of France in the European digital research infrastructure for the arts and humanities DARIAH http://www.dariah.fr
+
+The scope of SynopsX is on the one hand to help a single researcher to easily publish, explore and expose their XML data, and on the other hand for ITs teams to collaborate, mutualize and genericize their efforts. The project is candidate to join the facilities offered to researchers in arts and humanities by the TGIR Huma-Num.
+
+---
+
+# why SynopsX ?
+### (Human factors)
+
+## .red[collaborate]
+- research by projects
+- code quality & best practice
+
+## .red[sharing]
+- don’t reinvent the wheel
+- sustainability
+
+## .red[generalize]
+- maintainability
+- reusability
+
+---
+
+# why SynopsX ?
+### (a technical choice)
+
+![Tradi](.jpg)
+
+---
+
+# why SynopsX ?
+### (a technical choice)
+
+![A Full XML Stack](.jpg)
+
+---
+
+# Qui ?
+
+### AHN and folks !
+...
+
++ an non-institutionnal collaboration (free software model)
+
+---
+name: part2
+template: inverse
+class: middle center
+
+# A quick tour in XML database
+
+---
+
+# What is an XML database ?
+
+---
+
+# What is RESTXQ ?
+
+JAVA ...
+Adam Retter, etc.
+HTTP
+
+---
+
+# RESTXQ démo
+
+???
+- Show a path-annotated function that execute the same query
+- Go to the path
+- We conclude we've build a full publication based on this mecanism, SynopsX
+
+---
+name: part3
+template: inverse
+class: middle center
+
+# SynopsX inside
+
+---
+
+# The Workshop usecase
+
+???
+# The workshop usecase
+- Show the full example website
+- Explain that we will start from a downgraded version and build the missing features in order to rebuild the example website
+
+---
+
+# SynopsX installation (Linux and Mac OS)
+- Download : https://raw.githubusercontent.com/synopsx/synopsx/master/install.sh
+- In a terminal run `bash install.sh`
+- In a terminal run `/opt/basex/bin/basexhttp`
+- In an other terminal run `/opt/basex/bin/basexgui`
+
+---
+
+# Development principles
+
+## keep it simple !
+- a lightweight framework
+- easily accessible
+
+## fully customizable
+- user defined resources and representations
+- full choice of URI scheme
+- user-modifiable inheritance mechanism
+
+## MVC
+- separation of content and rendering
+- full templating mechanism (mappings)
+
+
+???
+Vs Omeka
+LOD perspectives + API
+
+---
+
+# Web application transformation chain
+
+![transformationChain](images/synopsxInsidebis.jpg)
+
+---
+
+# Code hierarchy
+
+### `_restxq/` contains the resource functions
+### `files/` contains SynopsX static files
+### `mappings/` contains SynopsX mappings (from data to various output formats)
+### `models/` contains SynopsX models (functions to access data in various formats)
+### `templates/` contains SynopsX templates (for HTML templating, etc.)
+### `workspace/` contains YOUR OWN projects !
+
+---
+
+# Project hierarchy
+```
+_restxq/
+files/
+mappings/
+models/
+templates/
+workspace/
+--project1
+-- -- _restxq/
+-- -- mappings/
+-- -- models/
+-- -- templates/
+--project2
+--etc.
+```
+
+???
+Is the same !
+Explain heritage
+
+---
+
+# Exercice 
+
+---
+
+# Web application transformation chain
+
+![transformationChain](images/synopsxInsidebis.jpg)
+
+---
+
+## SynopsX resource functions (`restxq/`)
+
+in `restxq/`
+- URI associated with an XQuery function
+- User defined URI scheme
+- [RESTXQ](http://docs.basex.org/wiki/RESTXQ)
+
+???
+Contains one resource function for the web application.
+
+Resource as entended by the W3C : anything ! Here any resource accessible from the application. It means an URI associated with an XQuery function.
+
+With RESTXQ you can serve the content you want at the URI you choose.
+
+---
+
+xquery version "3.0" ;
+  module namespace demo = 'demo' ;
+  declare default function namespace 'demo' ;
+  (:~
+   : resource function demo
+   :)
+  declare
+    %restxq:path('/demo')
+    %rest:produces('text/html')
+    %output:method('html')
+    %output:html-version('5.0')
+  function titres() {
+    myFunction()
+    };
+```
+
+---
+
+## SynopsX models functions (`models/`)
+
+queryTei($queryParams)
+
+$meta :=    map{}
+            a map
+
+$content := map(*)*
+            a map sequence
+
+Donner un exemple de liste de textes
+
+
+## SynopsX function construction
+
+getTEIItems($queryParams)
+          db:open('...')//tei:TEI[predicate]
+
+## SynopsX mapping item
+
+---
+
+# How to
+
+
+---
+
+# Questions ?
+
+https://github.com/synopsx
+
+
+---
+
+La version 8 de BaseX nécessite Java > 7.
+Nous vous conseillons de télécharger et d’installer le Java Development Kit version 8 :
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+---
+name: last-page
+template: inverse
+class: center middle
+
+## [Thanks a lot]() !
+
+.footnote[[revenir au début](#index)
+
+</textarea>
+<!--<script src="http://gnab.github.com/remark/downloads/remark-0.6.5.min.js" type="text/javascript"></script>-->
+    <script src="js/remark-0.6.5.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var hljs = remark.highlighter.engine;
+</script>
+<script src="remark.language.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var slideshow = remark.create({
+      highlightStyle: 'monokai',
+      highlightLanguage: 'remark'
+    }) ;
+</script>
+
+</body>
+</html>
