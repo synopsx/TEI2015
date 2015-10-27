@@ -1,8 +1,8 @@
 xquery version "3.0" ;
-module namespace TEI2015Workshop.webapp = 'TEI2015Workshop.webapp' ;
+module namespace example.webapp = 'example.webapp' ;
 
 (:~
- : This module is the RESTXQ for SynopsX's TEI2015Workshop
+ : This module is the RESTXQ for SynopsX's example
  :
  : @version 2.0 (Constantia edition)
  : @since 2015-02-05 
@@ -37,11 +37,11 @@ import module namespace synopsx.models.ead = 'synopsx.models.ead' at '../../../m
 import module namespace synopsx.mappings.htmlWrapping = 'synopsx.mappings.htmlWrapping' at '../../../mappings/htmlWrapping.xqm' ;
 
 (: Use a default namespace :)
-declare default function namespace 'TEI2015Workshop.webapp' ;
+declare default function namespace 'example.webapp' ;
 
 
-declare variable $TEI2015Workshop.webapp:project := 'TEI2015Workshop' ;
-declare variable $TEI2015Workshop.webapp:db := synopsx.models.synopsx:getProjectDB($TEI2015Workshop.webapp:project) ;
+declare variable $example.webapp:project := 'example' ;
+declare variable $example.webapp:db := synopsx.models.synopsx:getProjectDB($example.webapp:project) ;
 
 
 
@@ -50,11 +50,11 @@ declare variable $TEI2015Workshop.webapp:db := synopsx.models.synopsx:getProject
  :
  :)
 declare 
-  %restxq:path("/TEI2015Workshop")
+  %restxq:path("/example")
 function index() {
   <rest:response>
     <http:response status="303" message="See Other">
-      <http:header name="location" value="/TEI2015Workshop/home"/>
+      <http:header name="location" value="/example/home"/>
     </http:response>
   </rest:response>
 };
@@ -66,17 +66,17 @@ function index() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/home')
+  %restxq:path('/example/home')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
 function home() {
   let $queryParams := map {
-    'project' : $TEI2015Workshop.webapp:project,
-    'dbName' :  $TEI2015Workshop.webapp:db,
+    'project' : $example.webapp:project,
+    'dbName' :  $example.webapp:db,
     'model' : 'tei' ,
     'function' : 'queryCorpus',
-    'id' : $TEI2015Workshop.webapp:project
+    'id' : $example.webapp:project
     }
   let $outputParams := map {
     'lang' : 'fr',
@@ -99,13 +99,13 @@ function home() {
  : @bug not working curl -I -H "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" http://localhost:8984/corpus/
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/tei')
+  %restxq:path('/example/tei')
   %rest:produces('application/json')
   %output:method('json')
 function textsJS() {
    let $queryParams := map {
-      'project' : $TEI2015Workshop.webapp:project,     
-      'dbName' : $TEI2015Workshop.webapp:db,
+      'project' : $example.webapp:project,     
+      'dbName' : $example.webapp:db,
       'model' : 'tei',
       'function' : 'queryTEI'
     }    
@@ -120,14 +120,14 @@ function textsJS() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/tei')
+  %restxq:path('/example/tei')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
 function textsHtml() {  
     let $queryParams := map {
-    'project' : $TEI2015Workshop.webapp:project,
-    'dbName' :  $TEI2015Workshop.webapp:db,
+    'project' : $example.webapp:project,
+    'dbName' :  $example.webapp:db,
     'model' : 'tei' ,
     'function' : 'queryTEI'
     }
@@ -148,14 +148,14 @@ function textsHtml() {
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/tei/{$id}')
+  %restxq:path('/example/tei/{$id}')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
 function textHtml($id) {
   let $queryParams := map {
-  'project' : $TEI2015Workshop.webapp:project,
-  'dbName' :  $TEI2015Workshop.webapp:db,
+  'project' : $example.webapp:project,
+  'dbName' :  $example.webapp:db,
   'model' : 'tei' ,
   'function' : 'queryTEI',
   'id':$id
@@ -177,14 +177,14 @@ return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/ead')
+  %restxq:path('/example/ead')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
 function eadHtml() {
   let $queryParams := map {
-  'project' : $TEI2015Workshop.webapp:project,
-  'dbName' :  $TEI2015Workshop.webapp:db,
+  'project' : $example.webapp:project,
+  'dbName' :  $example.webapp:db,
   'model' : 'ead' ,
   'function' : 'queryEad'
   }
@@ -204,14 +204,14 @@ return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
  : the HTML serialization also shows a bibliographical list
  :)
 declare 
-  %restxq:path('/TEI2015Workshop/ead/c')
+  %restxq:path('/example/ead/c')
   %rest:produces('text/html')
   %output:method("html")
   %output:html-version("5.0")
 function cHtml() {
   let $queryParams := map {
-  'project' : $TEI2015Workshop.webapp:project,
-  'dbName' :  $TEI2015Workshop.webapp:db,
+  'project' : $example.webapp:project,
+  'dbName' :  $example.webapp:db,
   'model' : 'ead' ,
   'function' : 'queryC'
   }
@@ -223,3 +223,4 @@ function cHtml() {
   }
 return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
 };  
+
