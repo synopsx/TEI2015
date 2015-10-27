@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="960px" height="560px" viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
+<text transform="matrix(1 0 0 1 46.4355 196.5342)" fill="#FF29AC" font-family="'TheMix-Bold'" font-size="25.9518">Resource</text>
+<text transform="matrix(1 0 0 1 286.5039 196.5342)"><tspan x="0" y="0" fill="#FF29AC" font-family="'TheMix-Bold'" font-size="25.9518">Intermediate</tspan><tspan x="37.331" y="31.142" fill="#FF29AC" font-family="'TheMix-Bold'" font-size="25.9518">results</tspan><tspan x="51.941" y="62.284" fill="#3FA9F5" font-family="'TheMix-SemiBoldItalic'" font-size="25.9518">XML</tspan></text>
+<text transform="matrix(1 0 0 1 548.8994 196.5342)"><tspan x="0" y="0" fill="#FF29AC" font-family="'TheMix-Bold'" font-size="25.9518">Representations</tspan><tspan x="59.39" y="31.142" fill="#3FA9F5" font-family="'TheMix-SemiBoldItalic'" font-size="25.9518">HTML,</tspan><tspan x="66.98" y="62.284" fill="#3FA9F5" font-family="'TheMix-SemiBoldItalic'" font-size="25.9518">RDF,  </tspan><tspan x="75.116" y="93.427" fill="#3FA9F5" font-family="'TheMix-SemiBoldItalic'" font-size="25.9518">etc.</tspan></text>
+<text transform="matrix(1 0 0 1 79.1729 233.2793)"><tspan x="0" y="0" fill="#3FA9F5" font-family="'TheMix-SemiBoldItalic'" font-size="25.9518">URI</tspan><tspan x="-67.33" y="31.142" fill="#3FA9F5" font-family="'TheMix-SemiBoldItalic'" font-size="25.9518">+ HTTP headers</tspan></text>
+<text transform="matrix(1 0 0 1 321.1924 43.4951)" fill="#808080" font-family="'TheMix-SemiBoldItalic'" font-size="25.9332">model/</text>
+<text transform="matrix(1 0 0 1 580.3701 43.4951)" fill="#808080" font-family="'TheMix-SemiBoldItalic'" font-size="25.9332">mappings/</text>
+<text transform="matrix(1 0 0 1 57.6104 43.4951)" fill="#808080" font-family="'TheMix-SemiBoldItalic'" font-size="25.9332">restxq/</text>
+<polygon fill="#808080" points="441.039,362.756 475.871,216.863 441.039,70.97 510.705,70.97 545.539,216.863 510.705,362.756 "/>
+<polygon fill="#808080" points="175.708,362.756 210.541,216.863 175.708,70.97 245.375,70.97 280.208,216.863 245.375,362.756 "/>
+</svg>

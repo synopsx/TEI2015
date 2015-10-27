@@ -51,10 +51,9 @@ name: part1
 template: inverse
 class: middle center
 
-# .red[1] What is SynopsX ?
+# .red[1.] What is SynopsX ?
 
 ---
-layout: false
 
 # A lightweight XQuery-based framework...
 
@@ -78,6 +77,12 @@ It allows __full control over the URL scheme__ to build real REST applications a
 
 The software brings __a templating system__ for various renderings of resources according to predefined or customized mappings from XML data to output formats.
 As different partners were involved in the development, three principles have guided the conception of the software : collaboration, mutualization and genericization. At least from this point of view, we can say that SynopsX is a fruitful example of non­institutionnal collaboration around the building of an open source software in the field of the TEI.
+
+## Working examples on line
+http://editions.ihpc.huma-num.fr/
+
+## OAI example
+http://editions.ihpc.huma-num.fr/hyperdonat/oai?verb=ListSets
 
 ---
 
@@ -131,9 +136,9 @@ The scope of SynopsX is on the one hand to help a single researcher to easily pu
 ---
 
 # why SynopsX ?
-### (a technical choice)
+### Tradition application architecture
 
-![Tradi](.jpg)
+![Tradi](./images/xmlStackTradiBis.svg)
 
 ???
 Various approaches have been proposed to publish TEI corpora on line, but no standard software solution has emerged yet. As a possible next step after the markup of an edition, publication is still a difficult issue for many projects in Digital humanities.
@@ -144,16 +149,17 @@ MySQL, PHP, W3C recommandations for HTML, CSS, JS...
 ---
 
 # why SynopsX ?
-### (a technical choice)
+### An uniform XML Stack (.red[a technical choice])
 
-![A Full XML Stack](.jpg)
+![Full XML](./images/xmlStackXQueryBis.svg)
+
 
 ---
 name: part2
 template: inverse
 class: middle center
 
-# .red[2] A quick tour into XML database
+# .red[2.] A quick tour into XML database
 
 ---
 
@@ -202,9 +208,29 @@ And fonctionnalities usually follows XML standard conformance and standard imple
 
 ---
 
-# The BaseX components and APIs
+# The [BaseX](http://basex.org/) components and APIs
 
 ![BaseXserver](.png)
+
+???
+You can connect BaseX coponents to work in many different ways.
+- Use the BaseX Gui
+- Use the BaseX client
+- Use the BaseX serveur
+- Work with Oxygen by webdav
+- Access your data with HTTP
+- Access your data with REST
+
+So you can create a database
+- locally : via BaseX GUI ; via le client BaseX
+- remotely : via cURL ; via BaseX DBA
+
+Request data
+- locally : via BaseX GUI ; via le client BaseX
+- remotely : via cURL ; via BaseX REST
+
+Build web services, or web applications
+- with RESTXQ : link an url to an XQuery function
 
 ---
 
@@ -234,7 +260,7 @@ name: part3
 template: inverse
 class: middle center
 
-# .red[3] SynopsX inside
+# .red[3.] SynopsX inside
 
 ---
 
@@ -244,6 +270,8 @@ class: middle center
 ### Starting from an incomplete version
 ### Build the missing features
 
+If you kwnow very well XQuery, you can work with your own data.
+
 ???
 # The workshop usecase
 - Show the full example website
@@ -251,7 +279,7 @@ class: middle center
 
 ---
 
-# SynopsX installation (Linux and Mac OS)
+# .red[Ex :] SynopsX installation (Linux and Mac OS)
 ### Download :
 https://raw.githubusercontent.com/synopsx/synopsx/master/install.sh
 ### In a terminal run `bash install.sh`
@@ -264,29 +292,35 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 # Development principles
 
-## keep it simple !
+## .red[Keep it simple] !
 - a lightweight framework
 - easily accessible
 
-## fully customizable
+## .red[Fully customizable]
 - user defined resources and representations
+- content model liberty (since XML)
 - full choice of URI scheme
 - user-modifiable inheritance mechanism
 
-## MVC
+## .red[MVC]
 - separation of content and rendering
-- full templating mechanism (mappings)
-
+- [nearly] full templating mechanism (mappings)
 
 ???
-Vs Omeka
-LOD perspectives + API
+As far it’s XML, you can work and mix any kind of data (TEI, EAD, MARC XML, etc.)
+
+Vs Omeka or any other CMS, you can freely choose your own URI scheme = LOD perspectives + for building API
+
+Strict separation between data request and representations, so you can associate different representation with a same resource.
+
+Coming with a [nearly] Full templating mechanism (mappings)
+
 
 ---
 
 # Web application transformation chain
 
-![transformationChain](images/synopsxInsidebis.jpg)
+![transformationChain](./images/synopsxInsideTer.svg)
 
 ---
 
@@ -327,7 +361,7 @@ Explain heritage
 
 ---
 
-# A Pedagogic project
+# .red[Ex :] A Pedagogic project
 
 ### Download the code and the XML file
 - http://github.com/synopsx/TEI2015
@@ -351,7 +385,7 @@ Explain heritage
 ### See the work to be done
 
 ---
-# Create your first resources functions
+# .red[Ex :] Create your first resources functions
 
 ### Create your own simple resource function with RESTXQ
 
@@ -374,7 +408,7 @@ Explain heritage
 
 ---
 
-# Upgrade the TEI2015 project
+# .red[Ex :] Upgrade the TEI2015 project
 
 ### Add somme XQuery treatment for persName
 ### Add an HTML ressource for an Index
@@ -384,7 +418,7 @@ Explain heritage
 
 # Web application transformation chain
 
-![transformationChain](images/synopsxInsidebis.jpg)
+![transformationChain](./images/synopsxInsideTer.svg)
 
 ---
 
@@ -409,10 +443,10 @@ With RESTXQ you can serve the content you want at the URI you choose.
 queryTei($queryParams)
 
 $meta :=    map{}
-            a map
+            _a map_
 
 $content := map(*)*
-            a map sequence
+            _a map sequence_
 
 Donner un exemple de liste de textes
 
@@ -429,6 +463,7 @@ getTEIItems($queryParams)
 # Questions ?
 
 https://github.com/synopsx
+![follow us on Github](./images/githubSynopsx.svg)
 
 ---
 name: last-page
@@ -437,7 +472,7 @@ class: center middle
 
 ## [Thanks a lot]() !
 
-.footnote[[revenir au début](#index)
+.footnote[[revenir au début](#index)]
 
 </textarea>
 <!--<script src="http://gnab.github.com/remark/downloads/remark-0.6.5.min.js" type="text/javascript"></script>-->
