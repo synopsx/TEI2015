@@ -31,6 +31,7 @@ import module namespace synopsx.models.synopsx = 'synopsx.models.synopsx' at '..
 
 (: Put here all import modules declarations as needed :)
 import module namespace synopsx.models.tei = 'synopsx.models.tei' at '../../../models/tei.xqm' ;
+import module namespace TEI2015.models.tei = 'TEI2015.models.tei' at '../models/tei.xqm' ;
 import module namespace synopsx.models.ead = 'synopsx.models.ead' at '../../../models/ead.xqm' ;
 
 (: Put here all import declarations for mapping according to models :)
@@ -114,6 +115,26 @@ function textsHtml() {
  return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
 };
 
+declare 
+  %restxq:path('/TEI2015/persons')
+  %rest:produces('text/html')
+  %output:method("html")
+  %output:html-version("5.0")
+  function persons() {
+    let $queryParams := map {
+    'project' : $TEI2015.webapp:project,
+    'dbName' :  $TEI2015.webapp:db,
+    'model' : 'tei' ,
+    'function' : 'queryPerson'
+    }
+    let $outputParams := map {
+    'lang' : 'fr',
+    'layout' : 'home.xhtml',
+    'pattern' : 'inc_defaultItem.xhtml'
+    (: specify an xslt mode and other kind of output options :)
+    }
+    return synopsx.models.synopsx:htmlDisplay($queryParams, $outputParams)
+  };  
 
 (:~
  : this resource function is the html representation of the corpus resource
