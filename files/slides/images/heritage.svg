@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="800px" height="600px" viewBox="0 0 800 600" enable-background="new 0 0 800 600" xml:space="preserve">
+<g>
+	<g>
+		
+			<line fill="none" stroke="#7F7F7F" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="4,12" x1="68" y1="143" x2="68" y2="217"/>
+		<g>
+			<path fill="#7F7F7F" d="M67.932,215.765c2.717-2.717,8.089-4.012,11.817-4.118c-5.004,3.725-9.369,8.565-11.817,14.422
+				c-2.344-5.856-6.972-10.484-11.817-14.422C60.106,211.966,64.951,212.941,67.932,215.765z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 29.5146 130.8833)" fill="#CCCCCC" font-family="'TheSerif-Bold'" font-size="16">models/</text>
+<text transform="matrix(1 0 0 1 29.5146 104.9258)" fill="#ED1E79" font-family="'TheSerif-Bold'" font-size="20.874">synopsx.models</text>
+<text transform="matrix(1 0 0 1 29.2505 282.3569)" fill="#CCCCCC" font-family="'TheSerif-Bold'" font-size="16">workspace/project/models/</text>
+<text transform="matrix(1 0 0 1 29.5142 253.1216)" fill="#ED1E79" font-family="'TheSerif-Bold'" font-size="20.874">project.models</text>
+<text transform="matrix(1 0 0 1 206.1816 205.2085)" fill="#CCCCCC" font-family="'TheSerif-Bold'" font-size="16">mappings/</text>
+<text transform="matrix(1 0 0 1 206.1401 179.251)" fill="#3FA9F5" font-family="'TheSerif-Bold'" font-size="20.874">synopsx.mappings</text>
+<text transform="matrix(1 0 0 1 205.917 356.6816)" fill="#CCCCCC" font-family="'TheSerif-Bold'" font-size="16">workspace/project/mappings/</text>
+<text transform="matrix(1 0 0 1 206.1387 327.4463)" fill="#3FA9F5" font-family="'TheSerif-Bold'" font-size="20.874">project.mappings</text>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#7F7F7F" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="4,12" x1="256" y1="224" x2="256" y2="298"/>
+		<g>
+			<path fill="#7F7F7F" d="M255.932,296.765c2.717-2.717,8.089-4.012,11.817-4.118c-5.004,3.725-9.369,8.565-11.817,14.422
+				c-2.344-5.856-6.972-10.484-11.817-14.422C248.106,292.966,252.951,293.941,255.932,296.765z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 412.374 291.2085)" fill="#CCCCCC" font-family="'TheSerif-Bold'" font-size="16">templates/</text>
+<text transform="matrix(1 0 0 1 412.3906 265.251)" fill="#7AC943" font-family="'TheSerif-Bold'" font-size="20.874">synopsx.templates</text>
+<text transform="matrix(1 0 0 1 412.1094 442.6816)" fill="#CCCCCC" font-family="'TheSerif-Bold'" font-size="16">workspace/project/templates/</text>
+<text transform="matrix(1 0 0 1 412.1387 413.4463)" fill="#7AC943" font-family="'TheSerif-Bold'" font-size="20.874">project.mappings</text>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#7F7F7F" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="4,12" x1="462" y1="310" x2="462" y2="384"/>
+		<g>
+			<path fill="#7F7F7F" d="M461.932,382.765c2.717-2.717,8.09-4.012,11.816-4.118c-5.004,3.725-9.369,8.565-11.816,14.422
+				c-2.344-5.856-6.973-10.483-11.816-14.422C454.106,378.967,458.951,379.941,461.932,382.765z"/>
+		</g>
+	</g>
+</g>
+</svg>

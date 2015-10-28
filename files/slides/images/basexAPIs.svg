@@ -443,9 +443,11 @@
 <g>
 	<text transform="matrix(1 0 0 1 330.9966 362.0879)"><tspan x="0" y="0" fill="#E6E6E6" font-family="'TheSerif-Bold'" font-size="21">my nice</tspan><tspan x="-15.676" y="25.2" fill="#E6E6E6" font-family="'TheSerif-Bold'" font-size="21">webservice</tspan></text>
 </g>
-<line fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" x1="189" y1="238.5" x2="138" y2="344.088"/>
-<line fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" x1="305.411" y1="242.344" x2="330.41" y2="341"/>
-<line fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" x1="367.465" y1="189.763" x2="495.996" y2="233.555"/>
-<line fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" x1="367.569" y1="238.647" x2="489" y2="328"/>
-<line fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" x1="368.261" y1="154.826" x2="495.918" y2="119.557"/>
+<path fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" d="M206.92,238.97
+	c13.998,71.797-10.879,88.531-27.872,102.103"/>
+<path fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" d="M268.503,238c16,45.064,46.173,77.399,73.497,92"/>
+<path fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" d="M369.5,144c46.442-27.81,81.5-24.5,121.5-25.712"/>
+<path fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" d="M369.5,195c36.036-6.213,93.418,40.612,116.5,60.525
+	"/>
+<path fill="none" stroke="#808080" stroke-width="5" stroke-miterlimit="10" d="M334,238.97C400,325,444,330,480,344.088"/>
 </svg>
